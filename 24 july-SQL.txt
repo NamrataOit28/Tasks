@@ -1,0 +1,68 @@
+
+namrata=# select*from emp where e_name like'm%';
+ e_no |     e_name     | designation  | salary | date_of_joining |        email        | e_city |  phone_no
+------+----------------+--------------+--------+-----------------+---------------------+--------+------------
+    3 | miss.harshada  | Manager      | 400000 | 22/07/2024      | harshada@gmail.com  | pune   |  123456789
+    4 | miss.Pratiksha | Sr.Manager   | 500000 | 23/08/2024      | pratiksha@gmail.com | Delhi  |  987654321
+    6 | miss.Namrata   | Assistant    | 700000 | 25/07/2024      | namrata@gmail.com   | Satara |  567890987
+    5 | miss.Tanjila   | sr.Assistant | 600000 | 24/09/2024      | tanjila@gmail.com   | Nashik | 1234554321
+(4 rows)
+
+
+
+namrata=# select*from emp where e_name like'%t';
+ e_no |   e_name   | designation | salary | date_of_joining |         email         | e_city | phone_no
+------+------------+-------------+--------+-----------------+-----------------------+--------+----------
+    1 | .mr.advait | Ceo         |  53865 | 18/01/2024      | orangeitech@gmail.com | pune   |
+(1 row)
+
+
+
+namrata=# select e_name from emp where e_name like 'm%a' AND designation='Sr.Manager' AND e_city in('pune','mumbai','Delhi');
+     e_name
+----------------
+ miss.Pratiksha
+(1 row)
+
+
+
+namrata=# select*from emp where email like '%.%' AND salary between '300000'AND '600000'or e_no in(1,2,3,4);
+ e_no |     e_name     |  designation   | salary  | date_of_joining |         email         | e_city |  phone_no
+------+----------------+----------------+---------+-----------------+-----------------------+--------+------------
+    2 | .mr.Raghav     | senior manager | 60637.5 | 15/06/2019      | orangeitech@gmail.com | mumbai |
+    1 | .mr.advait     | Ceo            |   53865 | 18/01/2024      | orangeitech@gmail.com | pune   |
+    3 | miss.harshada  | Manager        |  400000 | 22/07/2024      | harshada@gmail.com    | pune   |  123456789
+    4 | miss.Pratiksha | Sr.Manager     |  500000 | 23/08/2024      | pratiksha@gmail.com   | Delhi  |  987654321
+    5 | miss.Tanjila   | sr.Assistant   |  600000 | 24/09/2024      | tanjila@gmail.com     | Nashik | 1234554321
+(5 rows)
+
+
+
+namrata=# select e_name,designation,phone_no from emp where e_name like'_____h%a'AND email like'%@%.%' AND phone_no='123456789';
+    e_name     | designation | phone_no
+---------------+-------------+-----------
+ miss.harshada | Manager     | 123456789
+(1 row)
+
+
+                                 ^
+namrata=# select*from emp order by designation desc;
+ e_no |     e_name     |  designation   | salary  | date_of_joining |         email         | e_city |  phone_no
+------+----------------+----------------+---------+-----------------+-----------------------+--------+------------
+    4 | miss.Pratiksha | Sr.Manager     |  500000 | 23/08/2024      | pratiksha@gmail.com   | Delhi  |  987654321
+    5 | miss.Tanjila   | sr.Assistant   |  600000 | 24/09/2024      | tanjila@gmail.com     | Nashik | 1234554321
+    2 | .mr.Raghav     | senior manager | 60637.5 | 15/06/2019      | orangeitech@gmail.com | mumbai |
+    3 | miss.harshada  | Manager        |  400000 | 22/07/2024      | harshada@gmail.com    | pune   |  123456789
+    1 | .mr.advait     | Ceo            |   53865 | 18/01/2024      | orangeitech@gmail.com | pune   |
+    6 | miss.Namrata   | Assistant      |  700000 | 25/07/2024      | namrata@gmail.com     | Satara |  567890987
+(6 rows)
+
+******************************************************************************************************************************************
+
+namrata=# select*from emp where e_name like '__________'order by e_name desc;
+ e_no |   e_name   |  designation   | salary  | date_of_joining |         email         | e_city | phone_no
+------+------------+----------------+---------+-----------------+-----------------------+--------+----------
+    2 | .mr.Raghav | senior manager | 60637.5 | 15/06/2019      | orangeitech@gmail.com | mumbai |
+    1 | .mr.advait | Ceo            |   53865 | 18/01/2024      | orangeitech@gmail.com | pune   |
+(2 rows)
+
