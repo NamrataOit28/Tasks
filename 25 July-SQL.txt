@@ -1,0 +1,116 @@
+1) Min :
+
+namrata=# select min(salary)from emp where e_city='pune';
+  min
+-------
+ 53865
+(1 row)
+
+********************************************************************************************************
+
+2) Max:
+
+namrata=# select max(salary)from emp where e_city='pune';
+  max
+--------
+ 400000
+(1 row)
+
+*************************************************************************************************************
+
+ 3) As :
+       
+namrata=# select min(salary)as minsalary from emp;
+ minsalary
+-----------
+     53865
+(1 row)
+
+***********************************************************************************************************
+
+4) As:
+
+ namrata=# select max(salary)as MAxSalary from emp as Employee where e_name like '%i%' AND date_of_joining='22/07/2024';
+ maxsalary
+-----------
+    400000
+(1 row)
+
+***************************************************************************************************************
+
+5) Count
+
+namrata=# select count(*) as total from emp as employee where e_city in('pune','satara')AND designation='Ceo';
+ total
+-------
+     1
+(1 row)
+**************************************************************************************************************
+
+6) Group By :
+
+namrata=# select designation from emp where e_city='pune' group by designation;
+ designation
+-------------
+ Ceo
+ Manager
+(2 rows)
+*********************************************************************************************************************
+
+7) Having :
+
+
+
+
+
+
+
+
+
+
+
+
+******************************************************************************************************************
+
+8)  Count (wise)
+
+
+namrata=# select count(designation)as Designation from emp;
+ designation
+-------------
+           6
+(1 row)
+
+
+9)
+
+namrata=#  select max(e_name)as Employee from emp group by designation;
+    employee
+----------------
+ miss.Tanjila
+ miss.harshada
+ .mr.Raghav
+ .mr.advait
+ miss.Pratiksha
+ miss.Namrata
+(6 rows)
+
+10)
+
+namrata=# select count(salary)from emp group by e_city having avg(salary)>500000;
+ count
+-------
+     1
+     1
+(2 rows)
+
+
+*****************************************************************************************************************
+
+
+
+
+
+
+
+
