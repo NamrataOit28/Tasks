@@ -1,0 +1,113 @@
+
+1) display the details of employee who having a maximum salary in a table.
+
+namrata=# select*from emp where salary=(select max(salary)from emp);
+
+ e_no |    e_name    | designation | salary | date_of_joining |       email       | e_city | phone_no
+------+--------------+-------------+--------+-----------------+-------------------+--------+-----------
+    6 | miss.Namrata | Assistant   | 700000 | 25/07/2024      | namrata@gmail.com | Satara | 567890987
+
+
+*************************************************************************************************************************************
+
+2) display the details of employee who having minimum salary but he/she belongs to pune or mumbai city and he/she name contains a or i character. 
+
+namrata=# select*from emp where salary=(select min(salary)from emp where e_city in('pune','mumbai')AND e_name like '%a%'or e_name like '%i%');
+
+ e_no |   e_name   | designation | salary | date_of_joining |         email         | e_city | phone_no
+------+------------+-------------+--------+-----------------+-----------------------+--------+----------
+    1 | .mr.advait | Ceo         |  53865 | 18/01/2024      | orangeitech@gmail.com | pune   |
+
+
+**************************************************************************************************************************************
+
+3) add department column in emp;
+
+namrata=# alter table emp add column dept_name varchar(50);
+ALTER TABLE
+
+namrata=# select*from emp;
+ e_no |     e_name     |  designation   | salary  | date_of_joining |         email         | e_city |  phone_no  | dept_name
+------+----------------+----------------+---------+-----------------+-----------------------+--------+------------+-----------
+    2 | .mr.Raghav     | senior manager | 60637.5 | 15/06/2019      | orangeitech@gmail.com | mumbai |            |
+    1 | .mr.advait     | Ceo            |   53865 | 18/01/2024      | orangeitech@gmail.com | pune   |            |
+    3 | miss.harshada  | Manager        |  400000 | 22/07/2024      | harshada@gmail.com    | pune   |  123456789 |
+    4 | miss.Pratiksha | Sr.Manager     |  500000 | 23/08/2024      | pratiksha@gmail.com   | Delhi  |  987654321 |
+    6 | miss.Namrata   | Assistant      |  700000 | 25/07/2024      | namrata@gmail.com     | Satara |  567890987 |
+    5 | miss.Tanjila   | sr.Assistant   |  600000 | 24/09/2024      | tanjila@gmail.com     | Nashik | 1234554321 |
+
+
+************************************************************************************************************************************
+4) update dname column;
+        
+namrata=# update emp set dept_name='computer sci'where e_no=1;
+UPDATE 1
+namrata=# update emp set dept_name='Management'where e_no=2;
+UPDATE 1
+namrata=# update emp set dept_name='Health'where e_no=3;
+UPDATE 1
+namrata=# update emp set dept_name='computer sci'where e_no=4;
+UPDATE 1
+namrata=# update emp set dept_name='Health'where e_no=5;
+UPDATE 1
+namrata=# update emp set dept_name='computer sci'where e_no=6;
+UPDATE 1
+
+namrata=# select*from emp;
+ e_no |     e_name     |  designation   | salary  | date_of_joining |         email         | e_city |  phone_no  |  dept_name
+------+----------------+----------------+---------+-----------------+-----------------------+--------+------------+--------------
+    1 | .mr.advait     | Ceo            |   53865 | 18/01/2024      | orangeitech@gmail.com | pune   |            | computer sci
+    2 | .mr.Raghav     | senior manager | 60637.5 | 15/06/2019      | orangeitech@gmail.com | mumbai |            | Management
+    3 | miss.harshada  | Manager        |  400000 | 22/07/2024      | harshada@gmail.com    | pune   |  123456789 | Health
+    4 | miss.Pratiksha | Sr.Manager     |  500000 | 23/08/2024      | pratiksha@gmail.com   | Delhi  |  987654321 | computer sci
+    5 | miss.Tanjila   | sr.Assistant   |  600000 | 24/09/2024      | tanjila@gmail.com     | Nashik | 1234554321 | Health
+    6 | miss.Namrata   | Assistant      |  700000 | 25/07/2024      | namrata@gmail.com     | Satara |  567890987 | computer sci
+
+
+**************************************************************************************************************************************
+
+5) display department wise details of emp;
+
+
+namrata=# select*from emp where dept_name='computer sci';
+
+ e_no |     e_name     | designation | salary | date_of_joining |         email         | e_city | phone_no  |  dept_name
+------+----------------+-------------+--------+-----------------+-----------------------+--------+-----------+--------------
+    1 | .mr.advait     | Ceo         |  53865 | 18/01/2024      | orangeitech@gmail.com | pune   |           | computer sci
+    4 | miss.Pratiksha | Sr.Manager  | 500000 | 23/08/2024      | pratiksha@gmail.com   | Delhi  | 987654321 | computer sci
+    6 | miss.Namrata   | Assistant   | 700000 | 25/07/2024      | namrata@gmail.com     | Satara | 567890987 | computer sci
+
+
+*********************************************************************************************************************************
+
+6) display total salary of emp of each department ;
+
+               
+namrata=# select sum(salary)as Salary,dept_name from emp group by dept_name;
+
+ salary  |  dept_name
+---------+--------------
+ 1000000 | Health
+ 60637.5 | Management
+ 1253865 | computer sci
+
+
+************************************************************************************************************************************
+
+7) display average salary of emp of computer dept ;
+
+namrata=# select avg(salary)as Salary from emp group by dept_name having dept_name='computer sci';
+
+ salary
+--------
+ 417955
+
+namrata=# select avg(salary) as salary from emp where dept_name='computer sci';
+
+ salary
+--------
+ 417955
+
+***********************************************************************************************************************************
+
+8) 
